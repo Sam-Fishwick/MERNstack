@@ -49,7 +49,7 @@ services:
 
 networks:
   app-network:
-    driver: default
+    driver: bridge
 
 
 volumes:
