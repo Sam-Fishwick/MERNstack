@@ -10,8 +10,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
-# RUN npm create vite@latest
+RUN npm install create-vite@4.4.1 &&\
+    npm create vite@4.4.1 client -- --template react &&\
+    cd client/ &&\
+    npm install
 
 # Copy local files
 COPY . .
@@ -20,4 +22,4 @@ COPY . .
 EXPOSE 3000
 
 # Run app
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
