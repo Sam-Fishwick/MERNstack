@@ -4,14 +4,14 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    image: myapp-server
-    container_name: myapp-express-server
-    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    image: express-server
+    container_name: express-server
+    command: npm run dev
     volumes:
       - ./server/:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - 5000:5000
+      - 5555:5555
     depends_on:
       - mongo
     env_file: ./server/.env
@@ -33,16 +33,16 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    image: myapp-client
-    container_name: myapp-react-client
-    command: npm start
+    image: react-client
+    container_name: react-client
+    command: npm run dev
     volumes:
       - ./client/:/usr/app
       - /usr/app/node_modules
     depends_on:
       - server
     ports:
-      - 3000:3000
+      - 5173:5173
     networks:
       - app-network
 

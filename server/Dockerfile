@@ -4,7 +4,7 @@
 FROM node:18
 
 # Working directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/server
 
 # Copy npm dependencies
 COPY package*.json ./
